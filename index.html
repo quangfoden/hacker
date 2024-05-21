@@ -23,12 +23,13 @@
             width: 100%;
             height: 100%;
         }
-        a{
+
+        a {
             position: absolute;
             z-index: 1000;
             top: 10px;
             left: 20px;
-            padding:10px 20px;
+            padding: 10px 20px;
             border-radius: 10px;
             background: brown;
             display: block;
@@ -40,11 +41,11 @@
 
 <body>
     <div class="wrapper">
-        <a href="https://www.youtube.com/watch?v=24XN1FxAzBc">Quay Lại</a>
+        <a class="clickBack">Quay Lại</a>
         <img src="hacker-4717018_1280.png" alt="">
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             function requestNotificationPermission() {
                 if ("Notification" in window) {
                     Notification.requestPermission().then(permission => {
@@ -56,22 +57,31 @@
                     console.log("Trình duyệt này không hỗ trợ thông báo.");
                 }
             }
-    
+
             function showNotification() {
                 const notification = new Notification("Thông báo mới!", {
-                    body: "Máy của bạn đã bị dính virus", 
-                    icon: "https://cdn.pixabay.com/photo/2019/12/24/15/38/hacker-4717018_1280.png" 
+                    body: "Cảnh báo: Máy tính của bạn có dấu hiệu nhiễm virus. Nhấp vào đây để xem thông tin chi tiết và hướng dẫn xử lý.",
+                    icon: "https://cdn.pixabay.com/photo/2019/12/24/15/38/hacker-4717018_1280.png"
                 });
-    
-                notification.onclick = function() {
+
+                notification.onclick = function () {
                     window.open("https://www.youtube.com/watch?v=24XN1FxAzBc");
                 };
             }
-    
-            requestNotificationPermission();
+            setTimeout(() => {
+                requestNotificationPermission();
+            }, 1000);
+            const clickBack = document.querySelector(".clickBack")
+            clickBack.onclick = function () {
+                console.log("hello");
+                requestNotificationPermission()
+                setTimeout(() => {
+                   window.open("https://www.youtube.com/watch?v=24XN1FxAzBc") 
+                }, 2000);
+            }
         });
     </script>
-    
+
 </body>
 
 </html>
