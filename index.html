@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="shortcut icon" href="hacker-4717018_1280.png" type="image/x-icon">
+    <title>Hacker</title>
     <style>
         * {
             margin: 0;
@@ -43,33 +44,34 @@
         <img src="hacker-4717018_1280.png" alt="">
     </div>
     <script>
-        function requestNotificationPermission() {
-            if ("Notification" in window) {
-                // Yêu cầu quyền
-                Notification.requestPermission().then(permission => {
-                    if (permission === "granted") {
-                        showNotification();
-                    }
-                });
-            } else {
-                console.log("Trình duyệt này không hỗ trợ thông báo.");
+        document.addEventListener('DOMContentLoaded', function() {
+            function requestNotificationPermission() {
+                if ("Notification" in window) {
+                    Notification.requestPermission().then(permission => {
+                        if (permission === "granted") {
+                            showNotification();
+                        }
+                    });
+                } else {
+                    console.log("Trình duyệt này không hỗ trợ thông báo.");
+                }
             }
-        }
-
-        function showNotification() {
-            const notification = new Notification("Thông báo mới!", {
-                body: "Máy của bạn đã bị dính virus", // Nội dung thông báo
-                icon: "https://cdn.pixabay.com/photo/2019/12/24/15/38/hacker-4717018_1280.png" // URL của icon
-            });
-
-            notification.onclick = function () {
-                window.open("https://www.youtube.com/watch?v=24XN1FxAzBc"); 
-            };
-        }
-
-        requestNotificationPermission();
-
+    
+            function showNotification() {
+                const notification = new Notification("Thông báo mới!", {
+                    body: "Máy của bạn đã bị dính virus", 
+                    icon: "https://cdn.pixabay.com/photo/2019/12/24/15/38/hacker-4717018_1280.png" 
+                });
+    
+                notification.onclick = function() {
+                    window.open("https://www.youtube.com/watch?v=24XN1FxAzBc");
+                };
+            }
+    
+            requestNotificationPermission();
+        });
     </script>
+    
 </body>
 
 </html>
